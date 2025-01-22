@@ -1,0 +1,12 @@
+volumes:
+  vaultwarden:
+
+services:
+    server:
+        container_name: Vaultwarden
+        volumes:
+            - vaultwarden:/data/
+        ports:
+            - 43756:80
+        image: vaultwarden/server:latest-alpine
+        restart: always

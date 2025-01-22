@@ -1,0 +1,19 @@
+services:
+  stirling-pdf:
+    image: frooodle/s-pdf:latest
+    container_name: Stirling-PDF
+    restart: always
+    ports:
+      - '22430:8080'
+    volumes:
+      - data:/usr/share/tessdata #Required for extra OCR languages
+      - data:/configs
+      - data:/customFiles/
+#      - ./logs:/logs/
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
+      - LANGS=en_US
+
+volumes:
+  data:

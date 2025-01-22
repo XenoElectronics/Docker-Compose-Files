@@ -1,0 +1,23 @@
+volumes:
+  data:
+  extensions:
+
+services:
+
+  freshrss:
+    image: freshrss/freshrss:alpine
+    container_name: Freshrss
+    hostname: freshrss
+    ports:
+      - 40786:80
+    restart: always
+    logging:
+      options:
+        max-size: 10m
+    volumes:
+      - data:/var/www/FreshRSS/data
+      - extensions:/var/www/FreshRSS/extensions
+    environment:
+      TZ: #Type your time Zone
+      CRON_MIN: '3,33'
+      TRUSTED_PROXY: 172.16.0.1/12 192.168.0.1/16

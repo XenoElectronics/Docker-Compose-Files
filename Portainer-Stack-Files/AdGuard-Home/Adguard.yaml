@@ -1,0 +1,15 @@
+volumes:
+  adguard:
+services:
+  adguard:
+    image: adguard/adguardhome
+    container_name: AdGuard
+    security_opt:
+      - no-new-privileges:true
+    restart: always
+    network_mode: host
+    volumes:
+      - adguard:/opt/adguardhome/conf:rw
+      - adguard:/opt/adguardhome/work:rw
+    environment:
+      TZ: #Type your time Zone

@@ -1,0 +1,15 @@
+services:
+    fullfeedrss:
+        restart: always
+        image: heussd/fivefilters-full-text-rss:latest
+        container_name: Full-Text-RSS
+        environment:
+            # Leave empty to disable admin section
+            - FTR_ADMIN_PASSWORD=
+        volumes:
+            - rss-cache:/var/www/html/cache/rss
+            - rss-cache:/var/www/html/cache
+        ports:
+            - 50000:80
+volumes:
+    rss-cache:

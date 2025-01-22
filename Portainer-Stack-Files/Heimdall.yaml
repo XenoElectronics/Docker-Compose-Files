@@ -1,0 +1,15 @@
+volumes:
+  heimdall:
+
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: Heimdall
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - heimdall:/config
+    ports:
+      - 27521:80
+      - 27522:443
+    restart: always

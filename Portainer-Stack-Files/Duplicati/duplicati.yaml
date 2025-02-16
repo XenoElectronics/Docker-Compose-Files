@@ -1,0 +1,15 @@
+volumes:
+  duplicati:
+
+services:
+  duplicati:
+    image: duplicati/duplicati:latest
+    container_name: Duplicati
+    volumes:
+      - duplicati:/config
+      - duplicati:/backups
+      - duplicati:/source
+      - duplicati:/data
+    ports:
+      - 8200:8200
+    restart: always

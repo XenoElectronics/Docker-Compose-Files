@@ -9,5 +9,5 @@ services:
       - uptime-kuma:/app/data
     ports:
       # <Host Port>:<Container Port>
-      - 3001:3001
+      - 49433:3001
     restart: always

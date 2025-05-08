@@ -1,0 +1,15 @@
+volumes:
+  homeassistant:
+
+services:
+  homeassistant:
+    image: lscr.io/linuxserver/homeassistant:latest
+    container_name: Homeassistant
+
+    environment:
+      - TZ= Europe/Berlin
+    volumes:
+      - homeassistant:/config
+    ports:
+      - 8123:8123
+    restart: always

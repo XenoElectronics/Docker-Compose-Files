@@ -1,0 +1,16 @@
+services:
+  netbootxyz:
+    image: ghcr.io/netbootxyz/netbootxyz
+    container_name: Netbootxyz
+    environment:
+      - MENU_VERSION=2.0.84 # optional
+      - NGINX_PORT=80 # optional
+      - WEB_APP_PORT=3000 # optional
+    volumes:
+      - /path/to/config:/config # optional
+      - /path/to/assets:/assets # optional
+    ports:
+      - 48555:3000  # optional, destination should match ${WEB_APP_PORT} variable above.
+      - 48556:69/udp
+      - 48557:80  # optional, destination should match ${NGINX_PORT} variable above.
+    restart: always

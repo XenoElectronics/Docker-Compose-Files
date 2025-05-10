@@ -1,0 +1,13 @@
+volumes:
+  cloudbeaver:
+
+services:
+    cloudbeaver:
+        image: dbeaver/cloudbeaver:latest
+        volumes:
+            - cloudbeaver:/opt/cloudbeaver/workspace
+        ports:
+            - 8978:8978
+        tty: true
+        container_name: Cloudbeaver
+        restart: always

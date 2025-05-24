@@ -1,0 +1,15 @@
+volumes:
+  searxng:
+
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: SearXNG
+    security_opt:
+      - no-new-privileges:true
+    volumes:
+      - searxng:/etc/searxng:rw
+      - searxng:/var/cache/searxng
+    restart: always
+    ports:
+      - 5147:8080

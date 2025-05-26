@@ -1,0 +1,55 @@
+volumes:
+  strapi-db:
+  strapi:
+
+services:
+  db:
+    image: postgres:17
+    container_name: Strapi-DB
+    hostname: strapi-db
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "strapidb", "-U", "strapiuser"]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    volumes:
+      - strapi-db:/var/lib/postgresql/data:rw
+    environment:
+      POSTGRES_DB: strapidb
+      POSTGRES_USER: strapiuser
+      POSTGRES_PASSWORD: strapipass
+    restart: always
+    
+  strapi:
+    image: vshadbolt/strapi:5.13.0
+    restart: always
+    container_name: Strapi
+    hostname: strapi
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:1337/ || exit 1
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapidb
+      DATABASE_USERNAME: strapiuser
+      DATABASE_PASSWORD: strapipass
+      DATABASE_SSL: false
+      BUILD: true
+      NODE_ENV: production
+      JWT_SECRET: #your Token
+      ADMIN_JWT_SECRET: #your Token
+      API_TOKEN_SALT: #your Token
+      TRANSFER_TOKEN_SALT: #your Token
+      #STRAPI_LICENSE: LicenseKey
+    volumes:
+      - strapi:/srv/app:rw
+    ports:
+      - 1337:1337
+    depends_on:
+      db:
+        condition: service_healthy

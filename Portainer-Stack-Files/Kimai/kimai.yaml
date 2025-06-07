@@ -1,7 +1,7 @@
 services:
 
   sqldb:
-    image: mysql:8.3
+    image: mysql:9.3
     volumes:
       - mysql:/var/lib/mysql
     environment:
@@ -13,7 +13,7 @@ services:
     restart: always
 
   kimai:
-    image: kimai/kimai2:apache
+    image: kimai/kimai2:latest
     volumes:
       - data:/opt/kimai/var/data
       - plugins:/opt/kimai/var/plugins

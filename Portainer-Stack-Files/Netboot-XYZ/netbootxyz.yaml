@@ -3,7 +3,7 @@ volumes:
 
 services:
   netbootxyz:
-    image: ghcr.io/netbootxyz/netbootxyz
+    image: ghcr.io/netbootxyz/netbootxyz:latest
     container_name: Netbootxyz
     environment:
       - MENU_VERSION=2.0.87 # optional

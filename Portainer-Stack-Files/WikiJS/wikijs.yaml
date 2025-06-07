@@ -1,7 +1,7 @@
 services:
 
   db:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     container_name: WikiJS-db
     environment:
       POSTGRES_DB: wiki

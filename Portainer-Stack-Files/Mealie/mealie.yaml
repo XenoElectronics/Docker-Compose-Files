@@ -1,19 +1,12 @@
 services:
   mealie:
-    image: ghcr.io/mealie-recipes/mealie:v2.4.1 # 
+    image: ghcr.io/mealie-recipes/mealie:latest
 
 
     container_name: Mealie
     restart: always
     ports:
-        - "9925:9000" # 
-
-
-    deploy:
-      resources:
-        limits:
-          memory: 1000M # 
-
+        - "9925:9000"
 
     volumes:
       - mealie-data:/app/data/
@@ -34,7 +27,7 @@ services:
 
   postgres:
     container_name: Mealie-db
-    image: postgres:15
+    image: postgres:17-alpine
     restart: always
     volumes:
       - mealie-pgdata:/var/lib/postgresql/data

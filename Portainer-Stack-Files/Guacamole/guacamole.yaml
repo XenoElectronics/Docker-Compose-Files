@@ -1,6 +1,6 @@
 services:
   guacamole:
-    image: flcontainers/guacamole
+    image: flcontainers/guacamole:latest
     container_name: Guacamole
     environment:
       TZ: #Type your time Zone

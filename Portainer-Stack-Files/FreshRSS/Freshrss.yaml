@@ -5,7 +5,7 @@ volumes:
 services:
 
   freshrss:
-    image: freshrss/freshrss:alpine
+    image: freshrss/freshrss:latest
     container_name: Freshrss
     hostname: freshrss
     ports:

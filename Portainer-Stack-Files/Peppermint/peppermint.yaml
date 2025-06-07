@@ -1,7 +1,7 @@
 services:
   peppermint_postgres:
     container_name: Peppermint_postgres
-    image: postgres:latest
+    image: postgres:17-alpine
     restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data

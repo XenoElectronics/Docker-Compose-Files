@@ -4,7 +4,7 @@ volumes:
 
 services:
   db:
-    image: postgres:17
+    image: postgres:17-alpine
     container_name: Strapi-DB
     hostname: strapi-db
     security_opt:
@@ -23,7 +23,7 @@ services:
     restart: always
     
   strapi:
-    image: vshadbolt/strapi:5.13.0
+    image: vshadbolt/strapi:latest
     restart: always
     container_name: Strapi
     hostname: strapi
